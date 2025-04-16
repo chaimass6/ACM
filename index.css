@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    background: linear-gradient(to bottom right, #000000, #003e8a, #1e005a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .lpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  #acm-logo {
+    width: 300px;
+    height: 300px;
+    stroke: #ffffff;
+    fill-opacity: 0;
+    stroke-width: 2px;
+    stroke-dasharray: 4000;
+  }
+  
+  .logoname {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 8px;
+    transition: 0.3s ease;
+  }
+  .logoname:hover {
+    color: #00b7ff;
+    text-shadow: 0 0 12px #00d9ff;
+  }
+  
