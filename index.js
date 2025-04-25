@@ -16,6 +16,7 @@ function handleLogin(event) {
   const password = document.getElementById('loginPassword').value;
   alert(`Logged in as ${username}`);
   return false;
+
 }
 
 // Handle signup
