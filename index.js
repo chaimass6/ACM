@@ -54,3 +54,26 @@ function handleSignup(event) {
   alert(`Signup successful for ${name}`);
   return false;
 }
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA0vHWGHBinIfggQboGsSWOuZrbL85vgRM",
+    authDomain: "chat-ed6df.firebaseapp.com",
+    projectId: "chat-ed6df",
+    storageBucket: "chat-ed6df.firebasestorage.app",
+    messagingSenderId: "491395756494",
+    appId: "1:491395756494:web:4b878f70732692bfd5fb9f",
+    measurementId: "G-XYCM2P8R28"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
