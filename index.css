@@ -73,10 +73,4 @@ button {
 button:hover {
   background: #00a87a;
 }
-form {
-  display: none;
-}
 
-form.active {
-  display: block;
-}
