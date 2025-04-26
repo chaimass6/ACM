@@ -12,7 +12,7 @@
 
   <!-- Login Form -->
   <form id="loginForm" class="active" onsubmit="return handleLogin(event)">
-    <input type="text" id="loginUsername" placeholder="Username" required>
+    <input type="email" id="loginUsername" placeholder="Email" required>
     <input type="password" id="loginPassword" placeholder="Password" required>
     <button type="submit">Login</button>
   </form>
@@ -32,6 +32,9 @@
   </form>
 </div>
 
-<script src="index.js" type="module" def ></script>
+<!-- Firebase SDKs -->
+<script type="module" src="firebase-init.js"></script>
+<script type="module" src="index.js"></script>
+
 </body>
 </html>
