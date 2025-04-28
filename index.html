@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login/Signup Toggle</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 
   <!-- Login Form -->
   <form id="loginForm" class="active" onsubmit="return handleLogin(event)">
-    <input type="email" id="loginUsername" placeholder="Email" required>
+    <input type="text" id="loginUsername" placeholder="Username" required>
     <input type="password" id="loginPassword" placeholder="Password" required>
     <button type="submit">Login</button>
   </form>
@@ -32,9 +32,6 @@
   </form>
 </div>
 
-<!-- Firebase SDKs -->
-<script type="module" src="firebase-init.js"></script>
-<script type="module" src="index.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
