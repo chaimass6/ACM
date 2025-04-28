@@ -1,7 +1,6 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #1e1e2f;
-  color: white;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2e2e4e);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,27 +10,40 @@ body {
 
 .container {
   background: #2e2e3e;
-  padding: 30px;
-  border-radius: 15px;
-  width: 300px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: 320px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1s ease-in-out;
 }
 
-.toggle-btn {
-  background: #444;
-  color: white;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 10px;
+.toggle-section {
+  text-align: center;
   margin-bottom: 20px;
+}
+
+.toggle-section h2 {
+  margin: 0;
+  color: #00ffbb;
+}
+
+.toggle-section p {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #ccc;
+}
+
+.toggle-section span {
+  color: #00c896;
   cursor: pointer;
-  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 form {
   display: none;
   flex-direction: column;
+  animation: fade 0.5s ease-in-out;
 }
 
 form.active {
@@ -42,17 +54,24 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
   border: none;
-  font-size: 14px;
+  font-size: 15px;
+  background: #444;
+  color: white;
+}
+
+input::placeholder {
+  color: #bbb;
 }
 
 .checkbox {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  font-size: 14px;
 }
 
 .checkbox input {
@@ -62,14 +81,25 @@ input[type="number"] {
 button {
   background: #00c896;
   border: none;
-  padding: 10px;
+  padding: 12px;
   color: white;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 16px;
+  transition: background 0.3s;
 }
 
 button:hover {
   background: #00a87a;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
