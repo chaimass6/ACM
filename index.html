@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login/Signup Toggle</title>
+  <title>Login / Signup</title>
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
 <div class="container">
-  <button class="toggle-btn" onclick="toggleForm()">Switch to Signup</button>
+  <div class="toggle-section">
+    <h2 id="formTitle">Login</h2>
+    <p id="toggleText">Don't have an account? <span onclick="toggleForm()">Sign up</span></p>
+  </div>
 
   <!-- Login Form -->
   <form id="loginForm" class="active" onsubmit="return handleLogin(event)">
@@ -26,9 +29,9 @@
     <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
     <div class="checkbox">
       <input type="checkbox" id="robotCheck">
-      <label for="robotCheck">Not a human 😜</label>
+      <label for="robotCheck">I am not a robot 🤖</label>
     </div>
-    <button type="submit">Signup</button>
+    <button type="submit">Sign up</button>
   </form>
 </div>
 
