@@ -1,29 +1,3 @@
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
-const formTitle = document.getElementById('formTitle');
-const toggleText = document.getElementById('toggleText');
-
-function toggleForm() {
-  loginForm.classList.toggle('active');
-  signupForm.classList.toggle('active');
-
-  if (loginForm.classList.contains('active')) {
-    formTitle.textContent = "Login";
-    toggleText.innerHTML = `Don't have an account? <span onclick="toggleForm()">Sign up</span>`;
-  } else {
-    formTitle.textContent = "Sign up";
-    toggleText.innerHTML = `Already have an account? <span onclick="toggleForm()">Login</span>`;
-  }
-}
-
-function handleLogin(event) {
-  event.preventDefault();
-  const username = document.getElementById('loginUsername').value;
-  const password = document.getElementById('loginPassword').value;
-  alert(`Logged in as ${username}`);
-  return false;
-}
-
 function handleSignup(event) {
   event.preventDefault();
 
@@ -32,7 +6,7 @@ function handleSignup(event) {
   const age = document.getElementById('signupAge').value;
   const password = document.getElementById('signupPassword').value;
   const confirmPassword = document.getElementById('signupConfirmPassword').value;
-  const isRobotChecked = document.getElementById('robotCheck').checked;
+  const isNotHuman = document.getElementById('robotCheck').checked;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,11 +25,45 @@ function handleSignup(event) {
     return false;
   }
 
-  if (!isRobotChecked) {
-    alert("Please confirm you are not a robot 🤖");
+  if (!isNotHuman) {
+    alert("Please confirm you are not a human 😜");
     return false;
   }
 
-  alert(`Signup successful for ${name}`);
+  // Save user credentials to localStorage
+  const user = {
+    name,
+    email,
+    password
+  };
+
+  localStorage.setItem('user', JSON.stringify(user));  // Convert object to JSON string
+  alert(`Signup successful for ${name}. Now you can login!`);
+
+  // Automatically switch to login form after signup
+  toggleForm();
+  
+  return false;
+}
+function handleLogin(event) {
+  event.preventDefault();
+  const username = document.getElementById('loginUsername').value;
+  const password = document.getElementById('loginPassword').value;
+
+  const storedUser = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
+
+  if (!storedUser) {
+    alert("No user found. Please signup first!");
+    return false;
+  }
+
+  if ((username === storedUser.name || username === storedUser.email) && password === storedUser.password) {
+    alert(`Logged in successfully as ${storedUser.name}!`);
+    // Redirect to main.html
+    window.location.href = "main.html";
+  } else {
+    alert("Invalid username/email or password. Please try again!");
+  }
+
   return false;
 }
