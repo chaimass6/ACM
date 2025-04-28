@@ -1,10 +1,3 @@
-import { auth } from './firebase-init.js';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-// Toggle Login/Signup
 const toggleBtn = document.querySelector('.toggle-btn');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
@@ -16,24 +9,17 @@ function toggleForm() {
   toggleBtn.textContent = loginForm.classList.contains('active') ? "Switch to Signup" : "Switch to Login";
 }
 
-// Login Handler
-window.handleLogin = function(event) {
+// Handle login
+function handleLogin(event) {
   event.preventDefault();
-
-  const email = document.getElementById('loginUsername').value;
+  const username = document.getElementById('loginUsername').value;
   const password = document.getElementById('loginPassword').value;
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      alert("Logged in successfully!");
-    })
-    .catch((error) => {
-      alert("Login error: " + error.message);
-    });
+  alert(`Logged in as ${username}`);
+  return false;
 }
 
-// Signup Handler
-window.handleSignup = function(event) {
+// Handle signup
+function handleSignup(event) {
   event.preventDefault();
 
   const name = document.getElementById('signupName').value;
@@ -47,29 +33,24 @@ window.handleSignup = function(event) {
 
   if (!emailRegex.test(email)) {
     alert("Invalid email format");
-    return;
+    return false;
   }
 
   if (password !== confirmPassword) {
     alert("Passwords do not match");
-    return;
+    return false;
   }
 
   if (!/^\d+$/.test(age) || age <= 0) {
-    alert("Enter a valid age");
-    return;
+    alert("Please enter a valid numeric age");
+    return false;
   }
 
   if (!isNotHuman) {
     alert("Please confirm you are not a human 😜");
-    return;
+    return false;
   }
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      alert("Signup successful!");
-    })
-    .catch((error) => {
-      alert("Signup error: " + error.message);
-    });
+  alert(`Signup successful for ${name}`);
+  return false;
 }
