@@ -1,3 +1,24 @@
+// Toggle between Login and Signup form
+function toggleForm() {
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const formTitle = document.getElementById('formTitle');
+  const toggleText = document.getElementById('toggleText');
+
+  if (loginForm.classList.contains('active')) {
+    loginForm.classList.remove('active');
+    signupForm.classList.add('active');
+    formTitle.innerText = "Sign Up";
+    toggleText.innerHTML = `Already have an account? <span onclick="toggleForm()">Login</span>`;
+  } else {
+    signupForm.classList.remove('active');
+    loginForm.classList.add('active');
+    formTitle.innerText = "Login";
+    toggleText.innerHTML = `Don't have an account? <span onclick="toggleForm()">Sign Up</span>`;
+  }
+}
+
+// Handle signup
 function handleSignup(event) {
   event.preventDefault();
 
@@ -30,27 +51,27 @@ function handleSignup(event) {
     return false;
   }
 
-  // Save user credentials to localStorage
   const user = {
     name,
     email,
     password
   };
 
-  localStorage.setItem('user', JSON.stringify(user));  // Convert object to JSON string
+  localStorage.setItem('user', JSON.stringify(user));  
   alert(`Signup successful for ${name}. Now you can login!`);
 
-  // Automatically switch to login form after signup
-  toggleForm();
-  
+  toggleForm();  // Switch to Login form after signup
   return false;
 }
+
+// Handle login
 function handleLogin(event) {
   event.preventDefault();
+
   const username = document.getElementById('loginUsername').value;
   const password = document.getElementById('loginPassword').value;
 
-  const storedUser = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
+  const storedUser = JSON.parse(localStorage.getItem('user')); 
 
   if (!storedUser) {
     alert("No user found. Please signup first!");
@@ -59,8 +80,9 @@ function handleLogin(event) {
 
   if ((username === storedUser.name || username === storedUser.email) && password === storedUser.password) {
     alert(`Logged in successfully as ${storedUser.name}!`);
-    // Redirect to main.html
-    window.location.href = "main.html";
+    // Set a flag that user is logged in
+    localStorage.setItem('isLoggedIn', 'true');
+    window.location.href = "main.html"; // Redirect to main page
   } else {
     alert("Invalid username/email or password. Please try again!");
   }
