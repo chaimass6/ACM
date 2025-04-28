@@ -1,15 +1,21 @@
-const toggleBtn = document.querySelector('.toggle-btn');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
+const formTitle = document.getElementById('formTitle');
+const toggleText = document.getElementById('toggleText');
 
 function toggleForm() {
   loginForm.classList.toggle('active');
   signupForm.classList.toggle('active');
 
-  toggleBtn.textContent = loginForm.classList.contains('active') ? "Switch to Signup" : "Switch to Login";
+  if (loginForm.classList.contains('active')) {
+    formTitle.textContent = "Login";
+    toggleText.innerHTML = `Don't have an account? <span onclick="toggleForm()">Sign up</span>`;
+  } else {
+    formTitle.textContent = "Sign up";
+    toggleText.innerHTML = `Already have an account? <span onclick="toggleForm()">Login</span>`;
+  }
 }
 
-// Handle login
 function handleLogin(event) {
   event.preventDefault();
   const username = document.getElementById('loginUsername').value;
@@ -18,7 +24,6 @@ function handleLogin(event) {
   return false;
 }
 
-// Handle signup
 function handleSignup(event) {
   event.preventDefault();
 
@@ -27,7 +32,7 @@ function handleSignup(event) {
   const age = document.getElementById('signupAge').value;
   const password = document.getElementById('signupPassword').value;
   const confirmPassword = document.getElementById('signupConfirmPassword').value;
-  const isNotHuman = document.getElementById('robotCheck').checked;
+  const isRobotChecked = document.getElementById('robotCheck').checked;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -46,8 +51,8 @@ function handleSignup(event) {
     return false;
   }
 
-  if (!isNotHuman) {
-    alert("Please confirm you are not a human 😜");
+  if (!isRobotChecked) {
+    alert("Please confirm you are not a robot 🤖");
     return false;
   }
 
